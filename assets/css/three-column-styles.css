@@ -1,0 +1,180 @@
+/* ============================================================
+   peacock-card-component — complete styles + fonts
+   Source: oru.edu/component-library (full-width-layout / three-column-cards)
+   Fonts: free Google Fonts only (Roboto Slab + Bebas Neue)
+   ============================================================ */
+
+/* ---------- FONTS (free Google Fonts) ---------- */
+/* Roboto Slab replaces the commercial MuseoSlab-500 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Bebas+Neue&display=swap');
+
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --brand-accent-tan: #C39236;
+  --brand-primary-blue: #041E41;
+  --font-bebas-neue: "Bebas Neue", sans-serif;
+  --font-body: "Roboto Slab", serif;
+}
+
+/* Base font + box model the component assumes */
+.peacock-card-component,
+.peacock-card-component * {
+  box-sizing: border-box;
+}
+
+.peacock-card-component {
+  font-family: var(--font-body);
+}
+
+/* ---------- SCROLL REVEAL (entrance animation) ---------- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(48px) scale(0.98);
+  transition: opacity 1.4s, transform 1.4s;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- HEADING ---------- */
+.peacock-card-heading {
+  margin-bottom: 2rem;
+  text-decoration: underline solid var(--brand-accent-tan) 3px;
+  text-underline-offset: 0.3rem;
+}
+
+/* ---------- CARD GRID ---------- */
+.peacock-card {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+
+  & .item {
+    padding: 2rem;
+    border-left: 1px solid var(--brand-accent-tan);
+  }
+
+  & .item-hidden {
+    visibility: hidden;
+  }
+
+  & .title {
+    font-family: var(--font-bebas-neue), serif !important;
+    font-size: 1.7rem;
+  }
+
+  & .image {
+    overflow: hidden;
+    max-width: 350px;
+    height: 250px;
+    margin: 0 auto;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  & .text {
+    max-width: 450px;
+    margin: 0 auto;
+    color: var(--brand-primary-blue);
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  & .list {
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: left;
+
+    & li {
+      margin-bottom: 0.5rem;
+      color: var(--brand-primary-blue);
+    }
+
+    & li::marker {
+      font-size: 1.5rem;
+      color: var(--brand-accent-tan);
+    }
+  }
+}
+
+/* ---------- THREE-COLUMN VARIANT ---------- */
+.peacock-card--three-column {
+  & .item {
+    flex: 0 1 33.3333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .peacock-card--three-column {
+    & .item:nth-child(3n + 1) {
+      border-left: none;
+    }
+  }
+}
+
+/* ---------- RESPONSIVE (stacked on mobile) ---------- */
+@media (max-width: 767.98px) {
+  .peacock-card {
+    display: block;
+
+    & .item {
+      width: 100%;
+      padding: 0 0 1rem;
+      margin-bottom: 2rem;
+      border-left: none;
+      border-bottom: 1px solid var(--brand-accent-tan);
+    }
+
+    & .item-hidden {
+      display: none;
+    }
+  }
+}
+
+/* ---------- BUTTON (.btn.btn-default.btn-light-blue) ---------- */
+.peacock-card .btn,
+.peacock-card .btn-default.btn-light-blue {
+  display: inline-block;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background-color: #AACAE2;
+  color: var(--brand-primary-blue);
+  transition: color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+}
+
+.peacock-card .btn-default.btn-light-blue:hover {
+  background-color: #93b9d6;
+  color: var(--brand-primary-blue);
+}
